@@ -11,17 +11,13 @@
     <header>
         Flask Practice
         <nav>
-            {#} <a href="{{url_for('home')}}">home</a>
+            <a href="{{url_for('home')}}">home</a>
             <a href="{{url_for('about')}}">about</a>
             <a href="{{url_for('register')}}">register</a>
             <a href="{{url_for('login')}}">login</a>
-            <a href="{{url_for('logout')}}">logout</a>
+            {#}<a href="{{url_for('logout')}}">logout</a>
             <a href="{{url_for('profile')}}">profile</a>
             <a href="{{url_for('edit_profile')}}">edit profile</a>{#}
-            <a href="#">home</a>
-            <a href="#">about</a>
-            <a href="#">register</a>
-            <a href="#">login</a>
             <a href="#">logout</a>
             <a href="#">profile</a>
             <a href="#">edit profile</a>
@@ -37,7 +33,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+
         {% block main %}{% endblock %}
     </main>
 </body>

@@ -6,13 +6,27 @@
 <form action="" method="POST">
     
     {{ form.hidden_tag() }}
-    <p>{{ form.email.label(class="classes-go-here") }}</p>
-    <p>{{ form.email(class="classes-go-here") }}</p>
-    <p>{{ form.password.label(class="classes-go-here") }}</p>
-    <p>{{ form.password(class="classes-go-here") }}</p>
-    <p>{{ form.remember.label(class="classes-go-here") }}
-    {{ form.remember(class="classes-go-here") }}</p>
-    <p>{{ form.submit(class="classes-go-here") }}</p>
+    
+    <!-- Email -->
+    <p>{{ form.email.label(class="c") }}</p>
+    {% if form.email.errors %} <p>{{ form.email(class="c") }}</p>
+    {% for error in form.email.errors %} <span>{{ error }}</span> {% endfor %}
+    {% else %} <p>{{ form.email(class="c") }}</p>
+    {% endif %}
+    
+    <!-- Password -->
+    <p>{{ form.password.label(class="c") }}</p>
+    {% if form.password.errors %} <p>{{ form.password(class="c") }}</p>
+    {% for error in form.password.errors %} <span> {{ error }}</span> {% endfor %}
+    {% else %} <p>{{ form.password(class="c") }}</p>
+    {% endif %}
+    
+    <!-- Remember Me? -->
+    <p>{{ form.remember.label(class="c") }}
+    {{ form.remember(class="c") }}</p>
+    
+    <!-- Submit -->
+    <p>{{ form.submit(class="c") }}</p>
 
 </form>
 
