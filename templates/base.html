@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Practice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
+    <script src="{{ url_for('static', filename='app.js') }}" ></script>
+</head>
+<body>
+    <header>
+        Flask Practice
+            {#} <a href="{{url_for('home')}}">home</a>
+            <a href="{{url_for('about')}}">about</a>
+            <a href="{{url_for('register')}}">register</a>
+            <a href="{{url_for('login')}}">login</a>
+            <a href="{{url_for('logout')}}">logout</a>
+            <a href="{{url_for('profile')}}">profile</a>
+            <a href="{{url_for('edit_profile')}}">edit profile</a>{#}
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">register</a>
+            <a href="#">login</a>
+            <a href="#">logout</a>
+            <a href="#">profile</a>
+            <a href="#">edit profile</a>
+    </header>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+</body>
+</html>
