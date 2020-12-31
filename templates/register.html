@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block main %}
 
+<h2>Register</h2>
+
+<form action="" method="POST">
+    
+    {{ form.hidden_tag() }}
+    <p>{{ form.username.label(class="classes-go-here") }}</p>
+    <p>{{ form.username(class="classes-go-here") }}</p>
+    <p>{{ form.email.label(class="classes-go-here") }}</p>
+    <p>{{ form.email(class="classes-go-here") }}</p>
+    <p>{{ form.password.label(class="classes-go-here") }}</p>
+    <p>{{ form.password(class="classes-go-here") }}</p>
+    <p>{{ form.confirm_password.label(class="classes-go-here") }}</p>
+    <p>{{ form.confirm_password(class="classes-go-here") }}</p>
+    <p>{{ form.submit(class="classes-go-here") }}</p>
+
+</form>
+
 {% endblock main %}

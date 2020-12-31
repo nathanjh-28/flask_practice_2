@@ -10,6 +10,7 @@
 <body>
     <header>
         Flask Practice
+        <nav>
             {#} <a href="{{url_for('home')}}">home</a>
             <a href="{{url_for('about')}}">about</a>
             <a href="{{url_for('register')}}">register</a>
@@ -24,8 +25,19 @@
             <a href="#">logout</a>
             <a href="#">profile</a>
             <a href="#">edit profile</a>
+        </nav>
     </header>
     <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         {% block main %}{% endblock %}
     </main>
 </body>

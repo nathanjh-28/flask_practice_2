@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block main %}
 
+<h2>Login</h2>
+
+<form action="" method="POST">
+    
+    {{ form.hidden_tag() }}
+    <p>{{ form.email.label(class="classes-go-here") }}</p>
+    <p>{{ form.email(class="classes-go-here") }}</p>
+    <p>{{ form.password.label(class="classes-go-here") }}</p>
+    <p>{{ form.password(class="classes-go-here") }}</p>
+    <p>{{ form.remember.label(class="classes-go-here") }}
+    {{ form.remember(class="classes-go-here") }}</p>
+    <p>{{ form.submit(class="classes-go-here") }}</p>
+
+</form>
+
 {% endblock main %}
