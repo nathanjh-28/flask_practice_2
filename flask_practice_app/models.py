@@ -1,5 +1,5 @@
 from datetime import datetime
-from practice_main import app, db
+from flask_practice_app import app, db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
