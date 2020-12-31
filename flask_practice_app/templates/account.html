@@ -1,5 +1,39 @@
 {% extends 'base.html' %}
 {% block main %}
-    <h1>Hello {{current_user.username}}, welcome to your account page!</h1>
+
+    <div>
+        <img src="{{current_user.image_file}}" width="100px" alt="">
+        <h1>Hello {{current_user.username}}, welcome to your account page!</h1>
+    </div>
+    
+    <form action="" method="POST">
+    
+        {{ form.hidden_tag() }}
+        
+        <!-- Username -->
+        <p>{{ form.username.label(class="c") }}</p>
+        {% if form.username.errors %} <p>{{ form.username(class="c") }}</p> 
+        {% for error in form.username.errors %}<span>{{ error }}</span> {% endfor %}
+        {% else %} <p>{{ form.username(class="c") }}</p>
+        {% endif %}
+        
+        <!-- Email -->
+        <p>{{ form.email.label(class="c") }}</p>
+        {% if form.email.errors %} <p>{{ form.email(class="c") }}</p>
+        {% for error in form.email.errors %} <span>{{ error }} </span> {% endfor %}
+        {% else %} <p>{{ form.email(class="c") }}</p>
+        {% endif %}
+        
+        <!-- Picture -->
+        <p>{{ form.picture.label(class="c") }}</p>
+        {% if form.picture.errors %} <p>{{ form.picture(class="c") }}</p> 
+        {% for error in form.picture.errors %} <span>{{ error }}</span> {% endfor %}
+        {% else %} <p>{{ form.picture(class="c") }}</p>
+        {% endif %}
+        
+        <!-- Submit -->
+        <p>{{ form.submit(class="c") }}</p>
+    
+    </form>
 
 {% endblock main %}

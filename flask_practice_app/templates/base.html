@@ -16,14 +16,15 @@
             {% if current_user.is_authenticated %}
             <a href="{{url_for('logout')}}">logout</a>
             <a href="{{url_for('account')}}">account</a>
-            {#}<a href="{{url_for('edit_profile')}}">edit profile</a>{#}
-            <a href="#">edit profile</a>
             {% else %}
             <a href="{{url_for('register')}}">register</a>
             <a href="{{url_for('login')}}">login</a>
             {% endif %}
         </nav>
     </header>
+
+    <hr>
+
     <main>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}

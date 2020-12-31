@@ -1,6 +1,6 @@
 from flask_practice_app import app, db, bcrypt
 from flask_practice_app.models import User, Post
-from flask_practice_app.forms import RegistrationForm, LoginForm
+from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -60,7 +60,19 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route("/account")
+@app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
-    return render_template('account.html')
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.image_file = form.picture.data
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.picture.data = current_user.image_file
+    return render_template('account.html', form=form)
