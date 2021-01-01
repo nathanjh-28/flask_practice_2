@@ -129,3 +129,7 @@ def contact():
         return redirect(url_for('home'))
     return render_template('contact.html', form=form)
     
+@app.route("/contacts/all")
+def all_contacts():
+    contacts = Contact.query.all()
+    return render_template('contacts_all.html',contacts=contacts)
