@@ -27,3 +27,22 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    
+    name = db.Column(db.String(100), nullable=False)
+    
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    
+    email = db.Column(db.String(120), nullable=False)
+
+    phone = db.Column(db.Integer)
+
+    subject = db.Column(db.String(75), nullable=False)
+
+    body = db.Column(db.String(280), nullable=False)
+
+    join = db.Column(db.Boolean)
+
+    #relationship

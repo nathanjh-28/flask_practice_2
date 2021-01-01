@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FormField, IntegerField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 from flask_practice_app.models import User
 from flask_login import current_user
 from wtforms.fields.html5 import URLField, TelField
@@ -95,9 +95,9 @@ class ContactForm(FlaskForm):
     #name
     name = StringField('Name', validators=[DataRequired()])
     #email
-    email = StringField('Email',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),Email()])
     #phone
-    phone = TelField('Phone',validators=[Length(min=10,max=10)])
+    phone = IntegerField('Phone',validators=[NumberRange(min=100000000,max=99999999,message='Please enter a valid US Phone Number')])
     #subject
     subject = StringField('Message Subject', validators=[DataRequired()])
     #body
