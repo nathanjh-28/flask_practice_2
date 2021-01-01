@@ -1,5 +1,5 @@
 from flask_practice_app import app, db, bcrypt
-from flask_practice_app.models import User, Post, Contact
+from flask_practice_app.models import User, Post, Contact, Channel
 from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ContactForm, ChannelForm
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
@@ -134,8 +134,18 @@ def all_contacts():
     contacts = Contact.query.all()
     return render_template('contacts_all.html',contacts=contacts)
 
-@app.route("/contacts/<int:contact_id>")
+@app.route("/contacts/<int:contact_id>", methods=['GET','POST'])
 def one_contact(contact_id):
     contact = Contact.query.get_or_404(contact_id)
     form = ChannelForm()
+    if form.validate_on_submit():
+        new_c = Channel(
+            title=form.title.data,
+            notes=form.notes.data,
+            channel_author=current_user,
+            contact_id=contact.id
+        )
+        db.session.add(new_c)
+        db.session.commit()
+        return redirect(url_for('one_contact',contact_id=contact.id))
     return render_template('one_contact.html',contact=contact, form=form)

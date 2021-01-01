@@ -98,7 +98,7 @@ class ContactForm(FlaskForm):
     #email
     email = StringField('Email',validators=[DataRequired(),Email()])
     #phone
-    phone = IntegerField('Phone',validators=[NumberRange(min=100000000,max=99999999,message='Please enter a valid US Phone Number')])
+    phone = IntegerField('Phone',validators=[NumberRange(min=1000000000,max=9999999999,message='Please enter a valid US Phone Number')])
     #subject
     subject = StringField('Message Subject', validators=[DataRequired()])
     #body

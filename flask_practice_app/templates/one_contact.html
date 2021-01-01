@@ -11,6 +11,20 @@
 
 <hr>
 
+<h3> Threads for this contact </h3>
+
+{% for channel in contact.channels %}
+<div>
+
+    <h2 style="display: inline;">{{ channel.title }}</h2>
+    <h4 style="display: inline;">Thread started by {{ channel.channel_author.username }}</h4>
+</div>
+<p>Additional Notes:</p> <p>{{ channel.notes }}</p>
+
+
+{% endfor %}
+
+
 <h3>Start a thread for this contact...</h3>
 
 <form action="" method="POST">
