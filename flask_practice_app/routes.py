@@ -111,7 +111,7 @@ def delete_post(post_id):
     flash('Your post has been deleted', 'success')
     return redirect(url_for('home'))
 
-@app.route("/contact", methods=['GET','POST'])
+@app.route("/contacts/new", methods=['GET','POST'])
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
@@ -133,3 +133,8 @@ def contact():
 def all_contacts():
     contacts = Contact.query.all()
     return render_template('contacts_all.html',contacts=contacts)
+
+@app.route("/contacts/<int:contact_id>")
+def one_contact(contact_id):
+    contact = Contact.query.get_or_404(contact_id)
+    return render_template('one_contact.html',contact=contact)
