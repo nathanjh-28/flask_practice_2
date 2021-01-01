@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FormField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_practice_app.models import User
 from flask_login import current_user
-from wtforms.fields.html5 import URLField
+from wtforms.fields.html5 import URLField, TelField
 # ===========================================================
 
 class RegistrationForm(FlaskForm):
@@ -83,3 +83,26 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post It!')
+
+#____________________________________________________________
+
+class TelephoneForm(FlaskForm):
+    country_code = IntegerField('Country Code')
+    area_code    = IntegerField('Area Code/Exchange')
+    number       = StringField('Number')
+
+class ContactForm(FlaskForm):
+    #name
+    name = StringField('Name', validators=[DataRequired()])
+    #email
+    email = StringField('Email',validators=[DataRequired()])
+    #phone
+    phone = TelField('Phone',validators=[Length(min=10,max=10)])
+    #subject
+    subject = StringField('Message Subject', validators=[DataRequired()])
+    #body
+    body = TextAreaField('Message Body', validators=[DataRequired()])
+    #join email list
+    join = BooleanField('Join our Emailing List')
+    #submit
+    submit = SubmitField('Submit!')

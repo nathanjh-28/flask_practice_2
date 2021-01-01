@@ -1,6 +1,6 @@
 from flask_practice_app import app, db, bcrypt
 from flask_practice_app.models import User, Post
-from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from flask_practice_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ContactForm
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -110,3 +110,11 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted', 'success')
     return redirect(url_for('home'))
+
+@app.route("/contact", methods=['GET','POST'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        flash('form submitted','success')
+    return render_template('contact.html', form=form)
+    
