@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h1>Create a Post</h1>
+
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <!-- Title -->
+        {{ form.title.label(class="c") }}
+        {% if form.title.errors %}
+        {{ form.title(class="c errors") }}
+        {% for error in form.title.errors %} <span>{{ error }}</span> {% endfor %}
+        {% else %}
+        {{ form.title(class="c") }}
+        {% endif %}
+        <!-- Content -->
+        {{ form.content.label(class="c") }}
+        {% if form.content.errors %}
+        {{ form.content(class="c errors") }}
+        {% for error in form.content.errors %} <span>{{ error }}</span> {% endfor %}
+        {% else %}
+        {{ form.content(class="c") }}
+        {% endif %}
+        <!-- Submit -->
+        {{ form.submit(class="btn") }}
+    </form>
+
+{% endblock main %}
