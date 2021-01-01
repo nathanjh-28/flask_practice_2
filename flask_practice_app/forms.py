@@ -91,6 +91,7 @@ class TelephoneForm(FlaskForm):
     area_code    = IntegerField('Area Code/Exchange')
     number       = StringField('Number')
 
+#____________________________________________________________
 class ContactForm(FlaskForm):
     #name
     name = StringField('Name', validators=[DataRequired()])
@@ -106,3 +107,13 @@ class ContactForm(FlaskForm):
     join = BooleanField('Join our Emailing List')
     #submit
     submit = SubmitField('Submit!')
+
+#____________________________________________________________
+class ChannelForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    notes = TextAreaField('Message Body', validators=[Length(max=280)])
+    submit = SubmitField('Add Comment')
+
+class ReplyForm(FlaskForm):
+    reply = TextAreaField('Message Body', validators=[Length(min=1,max=140)])
+    submit = SubmitField('Add Reply')

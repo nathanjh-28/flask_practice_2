@@ -11,7 +11,21 @@
 
 <hr>
 
+<h3>Start a thread for this contact...</h3>
 
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+
+    <p>{{ form.title.label }}</p>
+    <p>{{ form.title }} </p>
+
+    <p> {{ form.notes.label }}</p>
+    <p> {{ form.notes }}</p>
+
+    <p>{{ form.submit }}</p>
+
+
+</form>
 
 
 {% endblock main %}
